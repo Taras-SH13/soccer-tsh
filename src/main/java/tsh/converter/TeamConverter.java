@@ -11,23 +11,28 @@ import java.util.stream.Collectors;
 public class TeamConverter {
 
 
-       public static TeamDto toTeamDto(Team team) {
-            return new TeamDto(
-                    team.getIdteam(),
-                    team.getTeam_name(),
-                    team.getCity(),
-PlayerConverter.toPlayerDtoList(team.getPlayers(team))
-            );
-        }
+    public static TeamDto toTeamDto(Team team) {
+        return new TeamDto(
+                team.getIdteam(),
+                team.getTeam_name(),
+                team.getCountry(),
+                team.getCity(),
+                PlayerConverter.toPlayerDtoList(team.getPlayers(team))
+        );
+    }
 
-        public static List<PlayerDto> toPlayerDtoList(List<Player> players) {
-            return players.stream().map(tsh.converter.PlayerConverter::toPlayerDto).collect(Collectors.toList());
-        }
+    public static List<TeamDto> toTeamDtoList(List<Team> teams) {
+        return teams.stream().map(TeamConverter::toTeamDto).collect(Collectors.toList());
+    }
 
 
-        public static Player toPlayer(PlayerDto playerDto) {
-            return new Player(playerDto.getId(), playerDto.getPlayer_name(), playerDto.getPlayer_position());
-        }
+    public static Team toTeam(TeamDto teamDto) {
+        return new Team(teamDto.getIdteam(),
+                teamDto.getTeam_name(),
+                teamDto.getCountry(),
+                teamDto.getCity(),
+                teamDto.getPlayerDtos().stream().map(PlayerConverter::toPlayer).collect(Collectors.toList()));
+    }
 }
 
 
