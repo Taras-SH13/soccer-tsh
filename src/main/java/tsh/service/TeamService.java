@@ -3,8 +3,10 @@ package tsh.service;
 import org.springframework.stereotype.Service;
 import tsh.bd.Player;
 import tsh.bd.PlayerRepository;
+import tsh.bd.Team;
 import tsh.bd.TeamRepository;
 import tsh.converter.PlayerConverter;
+import tsh.converter.TeamConverter;
 import tsh.dto.PlayerDto;
 import tsh.dto.TeamDto;
 
@@ -42,21 +44,13 @@ public class TeamService {
     public void deletePlayer(Integer id) {
         playerRepository.deleteById(id);
     }
-//    public List<PlayerDto> findAll() {
-//
-//        return PlayerConverter.toPlayerDtoList(playerRepository.findAll());
-//    }
-//
-//    public PlayerDto findPlayerById(Integer id) {
-//        Optional<Player> optionalPlayer = playerRepository.findById(id);
-//        return optionalPlayer.map(PlayerConverter::toPlayerDto).orElse(null);
-//    }
-//
-//    public TeamDto createTeam(TeamDto teamDto) {
-//        Player player = PlayerConverter.toPlayer(playerDto);
-//        Player savedplayer = playerRepository.save(player);
-//        return PlayerConverter.toPlayerDto(savedplayer);
-//    }
+
+
+    public TeamDto createTeam(TeamDto teamDto) {
+        Team team = TeamConverter.toTeam(teamDto);
+        Team savedteams = teamRepository.save(team);
+        return TeamConverter.toTeamDto(savedteams);
+    }
 //
 //    public void deleteTeam(Integer id) {
 //        teamRepository.deleteById(id);
