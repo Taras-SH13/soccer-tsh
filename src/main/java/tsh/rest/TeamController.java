@@ -2,13 +2,18 @@ package tsh.rest;
 
 import org.springframework.web.bind.annotation.*;
 import tsh.bd.Player;
+import tsh.bd.Team;
+import tsh.bd.TeamRepository;
+import tsh.converter.PlayerConverter;
+import tsh.converter.TeamConverter;
 import tsh.dto.PlayerDto;
+import tsh.dto.TeamDto;
 import tsh.service.TeamService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "players")
+@RequestMapping(value = "teams")
 public class TeamController {
 
 
@@ -19,19 +24,23 @@ public class TeamController {
     }
 
     @GetMapping
-    public List<PlayerDto> findAll() {
-        return teamService.findAll();
+    public List<TeamDto> findAllTeam() {
+        return teamService.findAllTeam();
     }
+
     @PostMapping
-    public PlayerDto createPlayer(@RequestBody PlayerDto player) {
-        return teamService.createPlayer(player);
+    public TeamDto createTeam(@RequestBody TeamDto team) {
+        return teamService.createTeam(team);
     }
+
     @GetMapping(value = "{id}")
-    public PlayerDto findById(@PathVariable(value = "id") Integer id) {
-        return teamService.findPlayerById(id);
+    public TeamDto findTeamById(@PathVariable(value = "id") Integer id) {
+        return teamService.findTeamById(id);
     }
+
     @DeleteMapping(value = "{id}")
-    public void deletePlayer(@PathVariable(value = "id") Integer id) {
-        teamService.deletePlayer(id);
+    public void deleteTeam(@PathVariable(value = "id") Integer id) {
+        teamService.deleteTeam(id);
     }
+
 }
