@@ -7,26 +7,25 @@ import org.springframework.web.bind.annotation.RestController;
 import tsh.dto.PlayerDto;
 import tsh.dto.TeamDto;
 import tsh.service.PlayerService;
+import tsh.service.Service;
 import tsh.service.TeamService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "s")
+@RequestMapping(value = "service")
 
 public class ServiceController {
-    private final PlayerService playerService;
-    private final TeamService teamService;
+    private final Service service;
 
-    public ServiceController(PlayerService playerService, TeamService teamService) {
-        this.playerService = playerService;
-        this.teamService = teamService;
+
+    public ServiceController(Service service) {
+        this.service = service;
     }
 
-    @GetMapping(value = "{team}")
-    public List<PlayerDto> findAllPlayersByTeamsId(@PathVariable(value = "team") Integer team) {
-
-        return playerService.findAllPlayersByTeamsId(team);
+    @GetMapping(value = "{n}")
+    public List<PlayerDto> findAllPlayersByTeamsId(@PathVariable(value = "n") Integer idteam) {
+       return service.findAllPlayersByTeamsId(idteam);
     }
 
 }

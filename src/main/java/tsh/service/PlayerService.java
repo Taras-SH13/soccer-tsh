@@ -22,33 +22,29 @@ public class PlayerService {
     public PlayerService(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
-
+// CRUD operations
     public List<PlayerDto> findAll() {
 
         return PlayerConverter.toPlayerDtoList(playerRepository.findAll());
     }
-
-    public PlayerDto findPlayerById(Integer id) {
-        Optional<Player> optionalPlayer = playerRepository.findById(id);
+    // CRUD operations
+    public PlayerDto findPlayerById(Integer idplayer) {
+        Optional<Player> optionalPlayer = playerRepository.findById(idplayer);
         return optionalPlayer.map(PlayerConverter::toPlayerDto).orElse(null);
     }
-
+    // CRUD operations
     public PlayerDto createPlayer(PlayerDto playerDto) {
         Player player = PlayerConverter.toPlayer(playerDto);
         Player savedplayer = playerRepository.save(player);
         return PlayerConverter.toPlayerDto(savedplayer);
     }
-
-    public void deletePlayer(Integer id) {
-        playerRepository.deleteById(id);
+    // CRUD operations
+    public void deletePlayer(Integer idplayer) {
+        playerRepository.deleteById(idplayer);
     }
 
-    public List<PlayerDto> findAllPlayersByTeamsId(Integer team) {
-        return PlayerConverter
-                .toPlayerDtoList(playerRepository
-                        .findAllByTeamsId(team));
-    }
 
+    // CRUD operations
     public PlayerDto findPlayerByName(String name) {
         return PlayerConverter.toPlayerDto(playerRepository.findPlayersByPlayer_name(name));
     }

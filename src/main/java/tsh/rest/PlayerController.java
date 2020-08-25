@@ -28,10 +28,10 @@ public class PlayerController {
         return playerService.createPlayer(player);
     }
 
-    @GetMapping(value = "{id}")
-    public PlayerDto findPlayerById(@PathVariable(value = "id") Integer id) {
+    @GetMapping(value ="{id}")
+    public PlayerDto findPlayerById(@PathVariable(value = "id") Integer idplayer) {
 
-        return playerService.findPlayerById(id);
+        return playerService.findPlayerById(idplayer);
     }
 
     @DeleteMapping(value = "{id}")

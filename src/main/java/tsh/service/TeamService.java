@@ -24,17 +24,17 @@ public class TeamService {
         this.teamRepository = teamRepository;
 
     }
-
+    // CRUD operations
     public TeamDto createTeam(TeamDto teamDto) {
         Team team = TeamConverter.toTeam(teamDto);
         Team savedteams = teamRepository.save(team);
         return TeamConverter.toTeamDto(savedteams);
     }
-
+    // CRUD operations
     public void deleteTeam(Integer id) {
         teamRepository.deleteById(id);
     }
-
+    // CRUD operations
     public List<TeamDto> findAllTeam() {
         return TeamConverter.toTeamDtoList(teamRepository.findAll());
     }
