@@ -5,10 +5,12 @@ import java.util.List;
 @Entity
 @Table(name = "team")
 public class Team {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idteam", nullable = false)
     private int idteam;
+
 
     @Column(name = "team_name", nullable = false)
     private String team_name;
@@ -19,8 +21,13 @@ public class Team {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @JoinColumn(name = "team")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+
+    )
     private List<Player> players;
 
     public Team() {

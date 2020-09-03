@@ -14,4 +14,8 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
         return findPlayersByPlayer_name(player_name);
     }
 
+    default List<Player>findAllByTeam(String team){
+        return findAllByTeam(team);
+    }
+
 }

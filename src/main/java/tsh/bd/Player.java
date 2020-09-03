@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "player")
 public class Player {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idplayer", nullable = false)
@@ -16,13 +17,20 @@ public class Player {
     @Column(name = "player_position", nullable = false)
     private String player_position;
 
+
+
+    @Column(name ="team")
+    private String teamName;
+
+
     public Player() {
     }
 
-    public Player(int id, String player_name, String player_position) {
+    public Player(int id, String player_name, String player_position,String teamName) {
         this.id = id;
         this.player_name = player_name;
         this.player_position = player_position;
+        this.teamName=teamName;
     }
 
     public int getId() {
@@ -47,6 +55,10 @@ public class Player {
 
     public void setPlayer_position(String player_position) {
         this.player_position = player_position;
+    }
+
+    public String getTeamName() {
+        return teamName;
     }
 
     @Override

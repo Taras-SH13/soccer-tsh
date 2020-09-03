@@ -23,15 +23,19 @@ public class Service {
                 .toPlayerDtoList(playerRepository
                         .findAllByTeamsId(idteam));
     }
+    public List<PlayerDto> findAllPlayersByTeamsName(String name) {
+        return PlayerConverter
+                .toPlayerDtoList(playerRepository
+                        .findAllByTeam(name));
+    }
 
+    public void commandCheck(String teamName) {
 
-    public void commandCheck(Integer idteam) {
-
-        List<PlayerDto> teamList = findAllPlayersByTeamsId(idteam);
+        List<PlayerDto> teamList = findAllPlayersByTeamsName(teamName);
         Long count = teamList.stream().count();
         if(count>=11){
             System.out.printf("Command is full");
-        }else System.out.println("Command is not fuul");
+        }else System.out.println("Command is not full");
     }
 
 

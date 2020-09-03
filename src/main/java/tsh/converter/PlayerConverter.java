@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class PlayerConverter {
 
     public static PlayerDto toPlayerDto(Player player) {
-        return new PlayerDto(player.getId(), player.getPlayer_name(), player.getPlayer_position());
+        return new PlayerDto(player.getId(), player.getPlayer_name(), player.getPlayer_position(), player.getTeamName());
     }
 
     public static List<PlayerDto> toPlayerDtoList(List<Player> players) {
@@ -18,6 +18,6 @@ public class PlayerConverter {
 
 
     public static Player toPlayer(PlayerDto playerDto) {
-        return new Player(playerDto.getId(), playerDto.getPlayer_name(), playerDto.getPlayer_position());
+        return new Player(playerDto.getId(), playerDto.getPlayer_name(), playerDto.getPlayer_position(), playerDto.getTeamName());
     }
 }
