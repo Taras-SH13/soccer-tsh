@@ -23,9 +23,12 @@ public class ServiceController {
         this.service = service;
     }
 
-    @GetMapping(value = "{n}")
-    public List<PlayerDto> findAllPlayersByTeamsId(@PathVariable(value = "n") Integer idteam) {
-       return service.findAllPlayersByTeamsId(idteam);
+    @GetMapping
+    public List<PlayerDto> findAllPlayersByTeamsId(Integer idteam) {
+        return service.findByIdteam(idteam);
     }
-
+//    @GetMapping(value = "{id}")
+//    public List<PlayerDto> findAllPlayersByTeamsId(@PathVariable(value = "id") Integer idteam) {
+//        return service.findByIdteam(idteam);
+//    }
 }

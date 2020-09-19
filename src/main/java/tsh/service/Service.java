@@ -18,21 +18,12 @@ public class Service {
         this.playerRepository = playerRepository;
     }
 
-    public List<PlayerDto> findAllPlayersByTeamsId(Integer idteam) {
-        return PlayerConverter
-                .toPlayerDtoList(playerRepository
-                        .findAllByTeamsId(idteam));
+    public List<PlayerDto>findByIdteam(Integer id){
+        return PlayerConverter.toPlayerDtoList(teamRepository.findByIdteam(id));
     }
 
 
-    public void commandCheck(Integer idteam) {
 
-        List<PlayerDto> teamList = findAllPlayersByTeamsId(idteam);
-        Long count = teamList.stream().count();
-        if(count>=11){
-            System.out.printf("Command is full");
-        }else System.out.println("Command is not fuul");
-    }
 
 
 }

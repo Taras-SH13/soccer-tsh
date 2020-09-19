@@ -6,12 +6,5 @@ import java.util.List;
 
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
-    default List<Player> findAllByTeamsId(Integer idteam) {
-
-        return findAllByTeamsId(idteam);
-    }
-    default Player findPlayersByPlayer_name(String player_name){
-        return findPlayersByPlayer_name(player_name);
-    }
 
 }

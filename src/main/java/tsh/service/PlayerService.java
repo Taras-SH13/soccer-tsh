@@ -22,11 +22,13 @@ public class PlayerService {
     public PlayerService(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
+
 // CRUD operations
     public List<PlayerDto> findAll() {
 
         return PlayerConverter.toPlayerDtoList(playerRepository.findAll());
     }
+
     // CRUD operations
     public PlayerDto findPlayerById(Integer idplayer) {
         Optional<Player> optionalPlayer = playerRepository.findById(idplayer);
@@ -45,9 +47,9 @@ public class PlayerService {
 
 
     // CRUD operations
-    public PlayerDto findPlayerByName(String name) {
-        return PlayerConverter.toPlayerDto(playerRepository.findPlayersByPlayer_name(name));
-    }
+//    public PlayerDto findPlayerByName(String name) {
+//        return PlayerConverter.toPlayerDto(playerRepository.findPlayersByPlayer_name(name));
+//    }
 }
 
 

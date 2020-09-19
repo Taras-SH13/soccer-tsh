@@ -19,8 +19,8 @@ public class Team {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @JoinColumn(name = "team")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY,mappedBy = "team")
     private List<Player> players;
 
     public Team() {

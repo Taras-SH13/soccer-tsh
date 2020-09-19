@@ -44,7 +44,9 @@ public class TeamService {
         return optionalTeam.map(TeamConverter::toTeamDto).orElse(null);
     }
 
-
+    public List<PlayerDto>findByIdteam(Integer id){
+        return PlayerConverter.toPlayerDtoList(teamRepository.findByIdteam(id));
+    }
 }
 
 

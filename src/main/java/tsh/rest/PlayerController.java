@@ -23,6 +23,7 @@ public class PlayerController {
         return playerService.findAll();
     }
 
+
     @PostMapping
     public PlayerDto createPlayer(@RequestBody PlayerDto player) {
         return playerService.createPlayer(player);
